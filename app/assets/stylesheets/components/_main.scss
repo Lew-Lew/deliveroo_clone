@@ -1,0 +1,16 @@
+body {
+  background: var(--gris-gris-100, #F7F8F8);
+}
+
+.section-header-white {
+  background: $light-grey;
+}
+
+.h1-20 {
+  font-family: $body-font;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  color: $dark-grey;
+}

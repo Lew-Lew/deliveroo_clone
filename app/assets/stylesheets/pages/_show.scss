@@ -1,0 +1,40 @@
+.section-banner {
+  width: 100%;
+  height: 13.1875rem;
+  flex-shrink: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+
+.title-restaurant {
+  color: $dark-grey;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.015rem;
+}
+
+.restaurant-categories {
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+  color: #2C3233;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.00875rem;
+}
+
+.restaurant-infos {
+  color: rgba(44, 50, 51, 0.70);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.00875rem;
+}

@@ -1,2 +1,43 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <div class="section-header-white">
+      <p>Maintenant</p>
+      <% if user_signed_in? %>
+        <div><%= @user.address %></div>
+      <% end %>
+      <div class="d-flex justify-content-between">
+        <h1 class="h1-20">Restaurants</h1>
+        <div>
+          <%= image_tag("icons/heart.svg") %>
+        </div>
+      </div>
+    </div>
+
+
+  <div class="section-categories">
+    <% @categories.each do |category|%>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+        <%= category.name %>
+      </div>
+    <% end %>
+  </div>
+
+  <h2>Offres</h2>
+  <div class="section-restaurants">
+    <% @restaurants.each do |restaurant| %>
+      <div class="card-restaurant">
+        <div class="card-restaurant-img">
+          <%= image_tag(restaurant.photo) %>
+        </div>
+        <div class="card-restaurant-content">
+          <div class="card-restaurant-title">
+            <%= restaurant.name %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <h2>Du mal à choisir ?</h2>
+  <%= link_to "Un petit quizz pour t'aider",  %>
+</div>
+

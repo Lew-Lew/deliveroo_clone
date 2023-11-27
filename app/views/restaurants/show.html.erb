@@ -1,0 +1,20 @@
+<div class="section-banner" style="background-image: url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+</div>
+
+<div class="section-infos p-3 bg-white">
+  <div class="container d-flex flex-column">
+    <h1 class="title-restaurant m-0"><%= @restaurant.name %></h1>
+    <div>
+      <% @restaurant.categories.each do |category| %>
+        <p class="restaurant-categories"><%= category.name %></p>
+      <% end %>
+    </div>
+    <div>
+      <p class="restaurant-infos">À 1.12 km · Ferme à 21:15 · Livraison offerte </p>
+    </div>
+  </div>
+</div>
+
+<div class="section-items">
+  
+</div>

@@ -1,1 +1,16 @@
 // Specific CSS for your home-page
+.section-categories {
+ display: flex;
+ overflow: scroll;
+}
+
+.section-restaurants {
+  display: flex;
+  overflow: scroll;
+  gap: 0.5rem;
+}
+
+
+::-webkit-scrollbar {
+  display: none;
+}
