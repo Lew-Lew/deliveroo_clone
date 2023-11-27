@@ -38,6 +38,9 @@
   </div>
 
   <h2>Du mal à choisir ?</h2>
-  <%= link_to "Un petit quizz pour t'aider",  %>
+  <%= link_to quizz_restaurants_path, class:"button-quizz" do%>
+    <p>Un petit quizz pour t'aider</p>
+    <%=image_tag("icons/arrow2.svg")  %>
+  <% end %>
 </div>
 

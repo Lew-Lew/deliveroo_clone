@@ -1,0 +1,22 @@
+.button-quizz {
+  display: flex;
+  width: 21.4375rem;
+  padding: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0.3125rem;
+  background: $green;
+  text-decoration: none;
+
+/* Drop shadow_2 */
+  box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.04), 0px 2px 10px 0px rgba(0, 0, 0, 0.12);
+}
+
+.button-quizz > p {
+  color: #FFF;
+  // font-family: IBM Plex Sans KR;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
