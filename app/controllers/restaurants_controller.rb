@@ -9,6 +9,9 @@ class RestaurantsController < ApplicationController
     @desserts = @restaurant.items.where(dishes_type: "dessert")
     @accompagnements = @restaurant.items.where(dishes_type: "accompagnement")
     @boissons = @restaurant.items.where(dishes_type: "boisson")
+    @pending_orders = current_user.orders.select{|order| order.status == "pending" && order.restaurant_id == params[:id]}
+    @pending_orders.last.present? ? @order = @pending_orders.last.id : @order = Order.create(user_id: current_user.id, restaurant_id: params[:id], status: "pending", total_price: 0)
+
   end
 
   def quizz

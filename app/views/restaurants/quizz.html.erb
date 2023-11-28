@@ -1,6 +1,8 @@
 
 
 <div class="container" data-controller="multi-step-form">
+  <%= link_to "retour", root_path %>
+
   <%= simple_form_for :quiz, url: quizz_restaurants_path, method: :get do |f| %>
     <div class="section-multi-form-restriction" data-multi-step-form-target="restriction">
       <div>

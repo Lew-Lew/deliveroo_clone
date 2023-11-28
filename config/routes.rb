@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     collection do
       get :quizz
     end
+    post '/add_to_session_items', to: 'items#add_to_session', as: 'add_to_session_items'
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

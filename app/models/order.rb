@@ -5,5 +5,5 @@ class Order < ApplicationRecord
   has_many :items, through: :order_items
 
   validates :status, presence: true, inclusion: { in: %w[pending confirmed delivered] }
-  validates :total_price, presence: true, numericality: { greater_than: 0 }
+  validates :total_price, numericality: true
 end

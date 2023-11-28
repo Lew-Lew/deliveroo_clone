@@ -1,11 +1,27 @@
 <div class="section-banner"  style="background-image: url('<%= url_for(@item.photo) %>')"></div>
 
 <div class="container">
- <h1><%= @item.name %></h1>
+  <%= link_to "retour", restaurant_path(@item.restaurant) %>
+  <h1><%= @item.name %></h1>
   <p><%= @item.description %></p>
   <p><%= @item.price %></p>
 
   <%# Problem 1: Créer un formulaire. On stock les données dans une session(???) pour pouvoir ajouter d'autres items et valider la commande dans la show de restaurant %>
-  
+  <h2>Quel accompagnement souhaitez-vous pour votre burger ?</h2>
+
+
+  <%= simple_form_for :item, url: restaurant_add_to_session_items_path, method: :post do |f| %>
+  <!-- Item de base -->
+  <%= f.hidden_field :item_id, value: @item.id %>
+
+  <!-- Accompagnement -->
+  <% @accompagnements.each do |accompagnement| %>
+    <%= radio_button_tag :accompagnement_id, accompagnement.id %>
+    <%= label_tag "accompagnement_#{accompagnement.id}", accompagnement.name %><br>
+  <% end %>
+
+  <%= submit_tag "Ajouter à la session" %>
+<% end %>
+
 </div>
 

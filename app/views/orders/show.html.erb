@@ -1,1 +1,10 @@
-<%= @order %>
+show order
+<% total = 0 %>
+<% @pending_orders.each do |order| %>
+  <% order.order_items.each do |order_item| %>
+    <%= order_item.item.name %>
+    <%= order_item.item.price %>
+    <% total += order_item.item.price %>
+  <% end %>  
+<% end %>
+total: <%= total %>

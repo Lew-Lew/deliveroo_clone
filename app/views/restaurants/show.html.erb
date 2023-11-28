@@ -1,6 +1,6 @@
 <div class="section-banner" style="background-image: url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
 </div>
-
+<%= link_to "retour", root_path %>
 <div class="container mb-5">
   <div class="section-infos p-3 bg-white">
     <div class="d-flex flex-column">
@@ -15,6 +15,8 @@
       </div>
     </div>
   </div>
+
+  <%= link_to "Voir la commande", restaurant_order_path(@restaurant, @order) %>
 
   <h2>Offres</h2>
   <p>Profitez de prix réduits sur une sélection de produits</p>
