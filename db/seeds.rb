@@ -8,16 +8,19 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+require 'open-uri'
+require 'faker'
+
 puts "Cleaning database..."
 Category.destroy_all
+Item.destroy_all
 Restaurant.destroy_all
 RestaurantCategory.destroy_all 
-Item.destroy_all
 
 puts "Creating categories..."
 10.times do
   Category.create(
-    name: Faker::Restaurant.type 
+    name: ["vegan","végétarien","sans gluten","sans poisson","halal", "équilibré", "épicé"].sample
   )
 end
 
@@ -33,6 +36,23 @@ puts "Creating Restaurants..."
   file = URI.open('https://source.unsplash.com/1600x900/?restaurant')
   restaurant.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 
+  puts "Creating Items..."
+  10.times do
+    restaurant.items.create!(
+      name: Faker::Food.dish,
+      description: Faker::Food.description,
+      price: Faker::Number.between(from: 9, to: 50).to_f,
+      dishes_type: ["accompagnement","plat","dessert","boisson"].sample
+    )
+  end
+
+  puts "Attaching photos to items..."
+  Item.all.each do |item|
+    # Télécharge une image depuis une URL et l'attache à l'item
+    file = URI.open('https://source.unsplash.com/1600x900/?food')
+    item.photo.attach(io: file, filename: 'item_image.png', content_type: 'image/png')
+end
+
 end
 
 puts "Creating RestaurantCategories..."
@@ -43,14 +63,6 @@ puts "Creating RestaurantCategories..."
   )
 end
 
-puts "Creating Items..."
-10.times do
-  Item.create(
-    name: Faker::Food.dish,
-    price: Faker::Number.decimal(l_digits: 2),
-    restaurant: Restaurant.all.sample,
-    dishes_type: ["accompagnement","plat","dessert","boisson"].sample
-  )
-end
+
 
 puts "Finished!"

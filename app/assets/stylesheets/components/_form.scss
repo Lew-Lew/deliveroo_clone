@@ -1,0 +1,38 @@
+.multi-step-form-radios {
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem 1rem;
+  // justify-content: space-between;
+  // align-items: center;
+}
+
+.section-multi-form-restriction {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  // justify-content: space-between;
+}
+
+.radio-wrapper {
+  background-color: white;
+  display: flex;
+  margin-bottom: 0.5rem;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  align-items: center;
+}
+
+
+.radio-label {
+  // margin-left: 40px;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.01rem;
+}
+
+.btn-next-step {
+  width: 100%;
+}

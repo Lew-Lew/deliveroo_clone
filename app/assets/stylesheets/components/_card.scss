@@ -15,7 +15,13 @@
   background: linear-gradient(0deg, rgba(0, 27, 25, 0.60) 0%, rgba(0, 27, 25, 0.60) 100%), url("https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg"), lightgrey 50% / cover no-repeat;
 }
 
-.card-restaurant {
+.section-items {
+  display: flex;
+  overflow: scroll;
+  gap: 0.5rem;
+}
+
+.card-item {
   display: flex;
   width: 16.75rem;
   flex-direction: column;
@@ -23,7 +29,7 @@
   flex-shrink: 0;
 }
 
-.card-restaurant-img > img {
+.card-item-img > img {
   width: 16.75rem;
   height: 9rem;
   border-radius: 0.3125rem 0.3125rem 0rem 0rem;
@@ -33,9 +39,9 @@
   box-shadow: 0px 2px 6px 0px rgba(64, 64, 64, 0.07);
 }
 
-.card-restaurant-content {
+.card-item-content {
   display: flex;
-  height: 4.8125rem;
+  // height: 4.8125rem;
   padding: 0.75rem 0.5rem 1rem 0.5rem;
   flex-direction: column;
   align-items: flex-start;
@@ -46,4 +52,12 @@
 
   /* Drop shadow */
   box-shadow: 0px 2px 6px 0px rgba(64, 64, 64, 0.07);
+}
+
+.card-menu-img > img {
+  width: 6rem;
+  height: 6rem;
+  flex-shrink: 0;
+  border-radius: 0.25rem;
+  object-fit: cover;
 }

@@ -1,20 +1,116 @@
 <div class="section-banner" style="background-image: url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
 </div>
 
-<div class="section-infos p-3 bg-white">
-  <div class="container d-flex flex-column">
-    <h1 class="title-restaurant m-0"><%= @restaurant.name %></h1>
-    <div>
-      <% @restaurant.categories.each do |category| %>
-        <p class="restaurant-categories"><%= category.name %></p>
-      <% end %>
-    </div>
-    <div>
-      <p class="restaurant-infos">À 1.12 km · Ferme à 21:15 · Livraison offerte </p>
+<div class="container mb-5">
+  <div class="section-infos p-3 bg-white">
+    <div class="d-flex flex-column">
+      <h1 class="title-restaurant m-0"><%= @restaurant.name %></h1>
+      <div class="d-flex">
+        <% @restaurant.categories.each do |category| %>
+          <p class="restaurant-categories"><%= category.name %> · </p>
+        <% end %>
+      </div>
+      <div>
+        <p class="restaurant-infos">À 1.12 km · Ferme à 21:15 · Livraison offerte </p>
+      </div>
     </div>
   </div>
+
+  <h2>Offres</h2>
+  <p>Profitez de prix réduits sur une sélection de produits</p>
+  <div class="section-items">
+    <% @restaurant.items.each do |item| %>
+      <div class="card-item">
+        <div class="card-item-img">
+          <%= image_tag(item.photo) %>
+        </div>
+        <div class="card-item-content">
+          <div class="card-item-title">
+            <%= item.name %>
+          </div>
+          <div class="card-item-description">
+            <p><%= truncate(item.description, length: 50) %></p>
+          </div>
+          <div class="card-item-price">
+            <%= item.price %> €
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <% total_price_all_orders = 0 %>
+  <% current_user.orders.each do |order| %>
+    <% if order.restaurant == @restaurant && order.user == current_user %>
+      <% total_price_all_orders += order.total_price %>
+    <% end %>
+  <% end %>
+  <p>le prix total de la commande est <%= total_price_all_orders %></p> 
+
+
+  <h2>Menu</h2>
+  <h3>Plats</h3>
+  <% @main_dishes.each do |item|%>
+    <%= link_to restaurant_item_path(restaurant_id: @restaurant, id: item) do  %>
+      <div class="d-flex p-2 border-top justify-content-between">
+        <div>
+          <p><%= item.name %></p>
+          <p><%= truncate(item.description, length: 50) %></p>
+          <p class="mt-2"><%= item.price %></p>
+        </div>
+        <div class="card-menu-img ms-2">
+          <%= image_tag(item.photo)%>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+  <h3>Accompagnement</h3>
+  <% @accompagnements.each do |item| %>
+    <%= link_to restaurant_item_path(restaurant_id: @restaurant, id: item) do  %>
+      <div class="d-flex p-2 border-top justify-content-between">
+        <div>
+          <p><%= item.name %></p>
+          <p><%= truncate(item.description, length: 50) %></p>
+          <p class="mt-2"><%= item.price %></p>
+        </div>
+        <div class="card-menu-img ms-2">
+          <%= image_tag(item.photo)%>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+  <h3>Desserts</h3>
+  <% @desserts.each do |item| %>
+    <%= link_to restaurant_item_path(restaurant_id: @restaurant, id: item) do  %>
+      <div class="d-flex p-2 border-top justify-content-between">
+        <div>
+          <p><%= item.name %></p>
+          <p><%= truncate(item.description, length: 50) %></p>
+          <p class="mt-2"><%= item.price %></p>
+        </div>
+        <div class="card-menu-img ms-2">
+          <%= image_tag(item.photo)%>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+  <h3>Boissons</h3>
+  <% @boissons.each do |item| %>
+    <%= link_to restaurant_item_path(restaurant_id: @restaurant, id: item) do  %>
+      <div class="d-flex p-2 border-top justify-content-between">
+        <div>
+          <p><%= item.name %></p>
+          <p><%= truncate(item.description, length: 50) %></p>
+          <p class="mt-2"><%= item.price %></p>
+        </div>
+        <div class="card-menu-img ms-2">
+          <%= image_tag(item.photo)%>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 </div>
 
-<div class="section-items">
-  
-</div>

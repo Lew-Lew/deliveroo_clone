@@ -5,25 +5,27 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find(params[:id])
-  end
-
-  def new
-    @restaurant = Restaurant.new
-  end
-
-  def create
-    @restaurant = Restaurant.create(restaurant_params)
-
-    redirect_to restaurant_path(@restaurant)
+    @main_dishes = @restaurant.items.where(dishes_type: "plat")
+    @desserts = @restaurant.items.where(dishes_type: "dessert")
+    @accompagnements = @restaurant.items.where(dishes_type: "accompagnement")
+    @boissons = @restaurant.items.where(dishes_type: "boisson")
   end
 
   def quizz
-    
-  end
-
-  private
-
-  def restaurant_params
-    params.require(:restaurant).permit(:name, :address, :latitude, :longitude)
+    if params[:quiz].present?
+      # Récupérer les données du formulaire
+      selected_restriction = Category.find(params[:quiz][:restriction].to_i)
+      selected_humeur = Category.find(params[:quiz][:humeur].to_i)
+      # selected_faim = params[:quiz][:faim]
+      # selected_budget = params[:quiz][:budget]
+      @restaurants = Restaurant.select do |restaurant| 
+        restaurant.categories.pluck(:name).include?(selected_humeur.name) && restaurant.categories.pluck(:name).include?(selected_restriction.name)
+      end
+      render :results
+    else
+      @restaurants = Restaurant.all
+    end
+    # @restaurants = RestaurantCategory.select{|rc| rc.category.name == selected_humeur}
+    # .map{|rc| rc.restaurant}
   end
 end

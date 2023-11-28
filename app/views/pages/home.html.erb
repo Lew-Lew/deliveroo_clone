@@ -24,16 +24,18 @@
   <h2>Offres</h2>
   <div class="section-restaurants">
     <% @restaurants.each do |restaurant| %>
-      <div class="card-restaurant">
-        <div class="card-restaurant-img">
-          <%= image_tag(restaurant.photo) %>
-        </div>
-        <div class="card-restaurant-content">
-          <div class="card-restaurant-title">
-            <%= restaurant.name %>
+      <%= link_to restaurant_path(restaurant) do  %>
+        <div class="card-item">
+          <div class="card-item-img">
+            <%= image_tag(restaurant.photo) %>
+          </div>
+          <div class="card-item-content">
+            <div class="card-item-title">
+              <%= restaurant.name %>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>  
     <% end %>
   </div>
 

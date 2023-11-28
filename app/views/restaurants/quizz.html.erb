@@ -1,1 +1,23 @@
-<h1>quizz</h1>
+
+
+<div class="container" data-controller="multi-step-form">
+  <%= simple_form_for :quiz, url: quizz_restaurants_path, method: :get do |f| %>
+    <div class="section-multi-form-restriction" data-multi-step-form-target="restriction">
+      <div>
+        <h2>As-tu des restrictions alimentaires ?</h2>
+        <div class="multi-step-form-radios">
+          <%= f.collection_radio_buttons :restriction, Category.restriction, :id, :name, item_wrapper_class: 'radio-wrapper', item_label_class: 'radio-label' %>
+        </div>
+      </div>
+      <div>
+        <button class="btn btn-success text-white btn-next-step" data-action="click->multi-step-form#nextStep">Suivant</button>
+      </div>
+    </div>
+    <div class="section-multi-form-humeur" data-multi-step-form-target="humeur">
+      <h2>Quelle est ton humeur aujourd'hui ?</h2>
+      <%= f.collection_radio_buttons :humeur, Category.humeur, :id, :name, item_wrapper_class: 'radio-wrapper', item_label_class: 'radio-label' %>
+      <%= f.submit "Submit", class:"btn btn-success text-white btn-next-step" %>
+    </div>
+    </div>
+  <% end %>
+</div>

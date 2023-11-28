@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
-  resources :restaurants do
+  resources :restaurants, only: [:index, :show] do
+    resources :items, only: [:show]
+    resources :orders, only: [:create, :show]
     collection do
       get :quizz
     end
