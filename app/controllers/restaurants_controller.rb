@@ -16,19 +16,18 @@ class RestaurantsController < ApplicationController
 
   def quizz
     if params[:quiz].present?
-      # Récupérer les données du formulaire
       selected_restriction = Category.find(params[:quiz][:restriction].to_i)
       selected_humeur = Category.find(params[:quiz][:humeur].to_i)
-      # selected_faim = params[:quiz][:faim]
-      # selected_budget = params[:quiz][:budget]
       @restaurants = Restaurant.select do |restaurant| 
         restaurant.categories.pluck(:name).include?(selected_humeur.name) && restaurant.categories.pluck(:name).include?(selected_restriction.name)
       end
-      render :results
+      if @restaurants.empty?
+        redirect_to root_path, notice: "Aucun restaurant ne correspond à votre recherche" 
+      else  
+        render :results
+      end  
     else
       @restaurants = Restaurant.all
     end
-    # @restaurants = RestaurantCategory.select{|rc| rc.category.name == selected_humeur}
-    # .map{|rc| rc.restaurant}
   end
 end

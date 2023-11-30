@@ -1,5 +1,27 @@
-<% @restaurants.each do |r| %>
-  <%= r.name %>
-<% end %>
-
-<%= link_to "Voir plus", root_path %>
+<div class="container">
+  <div class="d-flex justify-content-between mb-5">
+    <%= link_to(root_path) do  %>
+      <%= image_tag("icons/close.svg") %>
+    <% end %>
+    <%= link_to(quizz_restaurants_path) do  %>
+      <%= image_tag("icons/restart.svg") %>
+    <% end %>
+  </div>
+  <h2 class="mb-3">Voici ce qu'on te propose !</h2>
+  <div class="section-restaurants mb-3">
+    <% @restaurants.each do |restaurant| %>
+      <%= link_to restaurant_path(restaurant) do  %>
+        <div class="card-item">
+          <div class="card-item-img">
+            <%= image_tag(restaurant.photo) %>
+          </div>
+          <div class="card-item-content">
+            <div class="card-item-title">
+              <%= restaurant.name %>
+            </div>
+          </div>
+        </div>
+      <% end %>  
+    <% end %>
+  </div>
+</div>
